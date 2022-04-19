@@ -15,13 +15,11 @@ spl_autoload_register("classLoader");
 // Front Controller
 class Aplicacao
 {
-  static private $app = ["/ketcia/web2", "/ketcia/web2/index.php"];
+  static private $app = "/ketcia/web2";
   public static function run()
   {
     $layout = new Template('view/layout.html');
-    $route = new Route(self::$app);
-    $class = $route->getClassName();
-    $method = $route->getMethodName();
+    $method="";
     if (isset($_GET["class"])){
       $class = $_GET["class"];
     }
@@ -32,6 +30,7 @@ class Aplicacao
     
     if (empty($class)) {
       $class = "Inicio";
+
     }
     if (class_exists($class)) {
       $pagina = new $class();
