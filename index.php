@@ -39,7 +39,7 @@ class Aplicacao
       } else {
         $pagina->controller();
       }
-      $layout->set('uri', self::$app[0]);
+      $layout->set('uri', self::$app);
       $layout->set('conteudo', $pagina->getMessage());
     }
     echo $layout->saida();
